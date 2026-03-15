@@ -1,18 +1,15 @@
 version: "3.5"
 services:
   database:
-    image: chromadb/chroma:latest
-    container_name: yanfei-data
-    command: "--workers 1 --host 0.0.0.0 --port 8000 --proxy-headers --log-config chromadb/log_config.yml --timeout-keep-alive 30"
+    image: qdrant/qdrant:latest
+    container_name: qdrant
     ports:
-      - 127.0.0.1:2201:8000
+      - 127.0.0.1:6333:6333
+      - 127.0.0.1:6334:6334
     volumes:
-      - chroma:/chroma/chroma
+      - qdrant:/qdrant/storage
     networks:
       - yanfei
-    environment:
-      IS_PERSISTENT: "TRUE"
-      PERSIST_DIRECTORY: /chroma/chroma
     restart: always
 
   cache:
@@ -25,7 +22,7 @@ services:
     restart: always
 
 volumes:
-  chroma:
+  qdrant:
     driver: local
 
 networks:
