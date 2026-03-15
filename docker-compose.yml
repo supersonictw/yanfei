@@ -4,7 +4,8 @@ services:
     image: qdrant/qdrant:latest
     container_name: yanfei-data
     ports:
-      - 127.0.0.1:2201:6333
+      - 127.0.0.1:2200:6333
+      - 127.0.0.1:2201:6334
     volumes:
       - qdrant:/qdrant/storage
     networks:
