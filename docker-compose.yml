@@ -2,10 +2,9 @@ version: "3.5"
 services:
   database:
     image: qdrant/qdrant:latest
-    container_name: qdrant
+    container_name: yanfei-data
     ports:
-      - 127.0.0.1:6333:6333
-      - 127.0.0.1:6334:6334
+      - 127.0.0.1:2201:6333
     volumes:
       - qdrant:/qdrant/storage
     networks:
